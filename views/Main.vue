@@ -1,0 +1,42 @@
+<template>
+    <div>
+        <el-container style="height: 100%;">
+            <el-aside width="auto">
+                <common-aside></common-aside>
+            </el-aside>
+                <el-container>
+                    <el-header>
+                        <common-header></common-header>
+                    </el-header>
+                    <el-main>
+                        <router-view></router-view>
+                    </el-main>
+                </el-container>
+        </el-container>
+
+    </div>
+</template>
+
+<script>
+import commonAside from '../src/components/CommonAside.vue'
+import commonHeader from '../src/components/CommonHeader.vue'
+export default {
+    name: 'Home',
+    components: {
+        commonAside,
+        commonHeader
+    },
+    data () {
+        return {}
+    }
+}
+</script>
+
+<style lang="less" scoped>
+.el-header{
+    background-color: #333;
+}
+.el-main{
+    padding: 0;
+}
+</style>
