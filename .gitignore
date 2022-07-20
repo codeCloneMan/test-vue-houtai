@@ -4,6 +4,7 @@ node_modules
 说明.md
 说明
 
+!.vscode/说明.md
 
 # local env files
 .env.local
