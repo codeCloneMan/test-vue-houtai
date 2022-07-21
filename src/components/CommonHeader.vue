@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     handleMenu() {
-      // this.$store.commit('collapseMenu')
+      this.$store.commit('collapseMenu')
     }
   }
 }
