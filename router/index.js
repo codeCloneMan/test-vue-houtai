@@ -4,6 +4,15 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+
+//解决Uncaught (in promise) NavigationDuplicated报错
+// import Router from 'vue-router'
+// Vue.use(Router)
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location){
+    return originalPush.call(this,location).catch(err => err)
+}
+
 const routes = [
     {
         path: '/',
