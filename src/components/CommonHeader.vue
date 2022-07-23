@@ -45,6 +45,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+//重写面包屑的字体颜色
+// .l-content /deep/ .el-breadcrumb__inner {
+//   color: #3A6DF3 ;
+// }
+//或者这样写
+// .myColor >>> .el-breadcrumb__inner {
+//   color: #3A6DF3 ;
+// }
+
 header {
   display: flex;
   height: 100%;

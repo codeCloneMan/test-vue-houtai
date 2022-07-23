@@ -22,7 +22,7 @@
         :form="searchFrom"
         :inline="true"
         ref="form">
-        <el-button type="primary" @click="getList">搜索</el-button>
+        <el-button type="primary" @click="getList(searchFrom.keyword)">搜索</el-button>
       </common-form>
       </div>
       <common-table :tableData="tableData" :tableLabel="tableLabel"
@@ -164,7 +164,7 @@ export default {
           type: 'warning'
         }).then(() => {
           const id = row.id;
-          this.$http.get('/user/del',{
+          this.$http.post('/user/del',{
             params: {id}
           }).then(() => {
             this.$message({
@@ -182,6 +182,7 @@ export default {
           page: this.config.page,
           name
           }).then(({data: res}) => {
+              console.log('res', res)
             this.tableData = res.list.map(item => {
               item.sexLabel = item.sex === 0 ? '女' : '男';
               return item;

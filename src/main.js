@@ -8,7 +8,7 @@ import {
   menuItem, MenuItemGroup, dropdown, dropdownMenu, dropdownItem,
   row, card, col, table, tableColumn, breadcrumb, breadcrumbItem, tag,
   form, formItem,input,Select,Switch,DatePicker,Option,Dialog,
-  Pagination
+  Pagination,MessageBox, Message
 } from 'element-ui'
 
 import 'element-ui/lib/theme-chalk/index.css'
@@ -56,6 +56,8 @@ Vue.use(Dialog)
 Vue.use(Pagination)
 
 Vue.prototype.$http = http
+Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$message = Message
 
 new Vue({
   store,

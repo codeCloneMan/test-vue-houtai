@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="wrapper" style="height: 100%;">
         <el-container style="height: 100%;">
             <el-aside width="auto">
                 <common-aside></common-aside>
@@ -41,6 +41,6 @@ export default {
     background-color: #333;
 }
 .el-main{
-    padding: 0;
+    padding: 10px;
 }
 </style>
