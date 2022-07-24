@@ -40,6 +40,10 @@
 </template>
 
 <script>
+// import mock from 'mockjs'
+// const mock = require('mockjs')
+import { getMenu } from '../../api/data'
+
 export default {
   name: "login",
   data() {
@@ -47,19 +51,35 @@ export default {
       form: {},
       rules: {
         username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
+          { required: true, message: '请输入用户名', trigger: 'blur' },
           {
             min: 3,
-            message: "用户名长度不能小于3位",
-            trigger: "blur ",
+            message: '用户名长度不能小于3位',
+            trigger: 'blur',
           },
         ],
-        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
+        password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
       },
     };
   },
   methods: {
-    login() {},
+    login(){
+        getMenu(this.form).then(({data: res}) => {
+            if(res.code === 20000){
+                this.$store.commit('clearMenu')
+                this.$store.commit('setMenu',res.data.menu)
+                this.$store.commit('setToken',res.data.token)
+                this.$store.commit('addMenu',this.$router)
+                this.$router.push({name: 'home'})
+            }else{
+                this.$message.warning(res.data.message)
+            }
+        })
+    //     const token = mock.Random.guid()
+    //     console.log(token)
+    //     this.$store.commit('setToken',token)
+    //     this.$router.push({name: 'home'})
+    }
   },
 };
 </script>
@@ -69,7 +89,7 @@ export default {
     border-radius: 15px;
     background-clip: padding-box;
     margin: 180px auto;
-    width: 350px;
+    width: 550px;
     padding: 35px 35px 15px 35px;
     background-color: #fff;
     border: 1px solid #eaeaea;

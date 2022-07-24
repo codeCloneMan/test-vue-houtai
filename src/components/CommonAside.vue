@@ -44,49 +44,8 @@
 export default {
   data() {
     return {
-      menu: [
-        {
-            path: '/',
-            name: 'home',
-            label: '首页',
-            icon: 's-home',
-            url: 'Home/home'
-        },
-        {
-            path: '/mall',
-            name: 'mall',
-            label: '商品管理',
-            icon: 'video-play',
-            url: 'MallManage/MallManage'  
-        },
-        {
-            path: '/user',
-            name: 'user',
-            label: '用户管理',
-            icon: 'user',
-            url: 'UserManage/UserManage'
-        },
-        {
-            label: '其他',
-            icon: 'location',
-            children: [
-                {
-                    path: '/page1',
-                    name: 'page1',
-                    label: '页面1',
-                    icon: 'setting',
-                    url: 'other/pageOne'
-                },
-                {
-                    path: '/page2',
-                    name: 'page2',
-                    label: '页面2',
-                    icon: 'setting',
-                    url: 'other/pageTwo'
-                }
-            ]
-        }
-    ]};
+      menu: []
+      };
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -105,14 +64,19 @@ export default {
   },
   computed: {
     noChildren(){
-        return this.menu.filter(item => !item.children)
+        // return this.menu.filter(item => !item.children)
+        return this.asyncMenu.filter(item => !item.children)
     },
     hasChildren(){
-        return this.menu.filter(item => item.children)
+        // return this.menu.filter(item => item.children)
+        return this.asyncMenu.filter(item => item.children)
     },
     isCollapse(){
         console.log(this)
         return this.$store.state.tab.isCollapse
+    },
+    asyncMenu(){
+        return this.$store.state.tab.menu
     }
   }
 };
